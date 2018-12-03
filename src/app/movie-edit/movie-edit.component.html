@@ -1,0 +1,93 @@
+<mat-card>
+  <form (submit)="onEditMovie(movieForm)" #movieForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        ngModel={{movie.title}}
+        required
+        minlength="3"
+        placeholder="Title"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter a movie title.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="director"
+        ngModel={{movie.director}}
+        required
+        placeholder="Director"
+        #director="ngModel">
+      <mat-error *ngIf="director.invalid">Please enter a movie director.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="star"
+        ngModel={{movie.star}}
+        required
+        placeholder="Star"
+        #star="ngModel">
+      <mat-error *ngIf="star.invalid">Please enter a movie star.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="url"
+        name="thumbnail"
+        ngModel={{movie.thumbnail}}
+        required
+        placeholder="Thumbnail URL"
+        #thumbnail="ngModel">
+      <mat-error *ngIf="thumbnail.invalid">Please enter a movie thumbnail url.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="url"
+        name="trailerUrl"
+        ngModel={{movie.trailerUrl}}
+        required
+        placeholder="Trailer URL"
+        #trailerUrl="ngModel">
+      <mat-error *ngIf="trailerUrl.invalid">Please enter a movie trailer url.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        name="content"
+        ngModel={{movie.content}}
+        required
+        placeholder="Synopsis"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter a movie synopsis</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Rating" [(ngModel)]="selectedRating" name="rating">
+        <mat-option *ngFor="let rating of ratings" [value]="rating.value">
+          {{rating.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="like"
+        ngModel={{movie.like}}
+        required
+        disabled="true"
+        placeholder="Like"
+        #like="ngModel">     
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Update Movie</button>
+  </form>
+</mat-card>

@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">Review List 
+  <button mat-button [routerLink]="['/review-add']" color="Warn">Create</button>
+</mat-toolbar>
+<mat-accordion multi="true" *ngIf="reviews.length > 0">
+  <mat-expansion-panel [expanded]="true" *ngFor="let review of reviews">
+    <mat-expansion-panel-header>
+      {{ review.title }}
+    </mat-expansion-panel-header>
+    <p>{{ review.content }}</p>
+    <mat-action-row>
+      <button mat-button [routerLink]="['/review-edit', review._id]" color="primary">EDIT</button>
+      <button mat-button (click)="onReviewDelete(review._id)" color="warn">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="reviews.length <= 0">No reviews added yet!</p> 

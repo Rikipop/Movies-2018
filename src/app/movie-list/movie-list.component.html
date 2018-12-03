@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">Movies List
+  <button mat-button [routerLink]="['/movie-add']" color="Warn">Add</button>
+</mat-toolbar>
+<mat-accordion multi="true" *ngIf="movies.length > 0">
+  <mat-expansion-panel [expanded]="false" *ngFor="let movie of movies">
+    <mat-expansion-panel-header>
+      {{ movie.title }}     
+    </mat-expansion-panel-header>
+    
+    <mat-card class="example-card">
+      <img mat-card-image src={{movie.thumbnail}} alt="thumbnail image"/>
+      <mat-card-content>
+        <p>{{ movie.content }}</p>
+      </mat-card-content>
+      <mat-card-subtitle>
+        Director: {{ movie.director }} <br/>
+        Star: {{ movie.star }}
+      </mat-card-subtitle>      
+      <mat-card-actions>
+        <button mat-button (click)="onMovieLike(movie)" matBadge={{movie.like}} matBadgePosition="after" matBadgeColor="accent">LIKE</button>        
+      </mat-card-actions>
+    </mat-card>  
+    <mat-action-row>
+      <button mat-button [routerLink]="['/movie-edit', movie._id]" color="primary">EDIT</button>
+      <button mat-button (click)="onMovieDelete(movie._id)" color="warn">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="movies.length <= 0">No movies added yet!</p> 

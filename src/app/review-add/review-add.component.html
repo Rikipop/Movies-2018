@@ -1,0 +1,31 @@
+<mat-card>
+  <form (submit)="onAddReview(reviewForm)" #reviewForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        ngModel
+        required
+        minlength="3"
+        placeholder="Title"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter a review title.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="5"
+        name="content"
+        ngModel
+        required
+        placeholder="Comment"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter a review comment.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Save Review</button>
+  </form>
+</mat-card>

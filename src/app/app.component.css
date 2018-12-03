@@ -1,0 +1,11 @@
+@import '~@angular/material/prebuilt-themes/purple-green.css';
+
+
+.header {
+  /*added car image through assets folder and styling*/
+  background: url('/assets/coverimage.jpg') !important; /*forces car background intead of angular*/
+  background-size: cover;
+  background-position: center;
+  min-height: 80%;
+  width: 100%;
+}
